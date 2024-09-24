@@ -2394,17 +2394,17 @@ LOAD e:/stm32_cubeide/stm32cubeide_1.7.0/stm32cubeide/plugins/com.st.stm32cube.i
  .debug_macro   0x0000000000015384      0x1ed ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
  .debug_macro   0x0000000000015571      0x194 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
 
-.debug_line     0x0000000000000000     0x4cdd
+.debug_line     0x0000000000000000     0x4cde
  .debug_line    0x0000000000000000      0x65e ./Core/Src/EX_1.o
- .debug_line    0x000000000000065e      0x6f5 ./Core/Src/main.o
- .debug_line    0x0000000000000d53      0x661 ./Core/Src/stm32f1xx_hal_msp.o
- .debug_line    0x00000000000013b4      0x722 ./Core/Src/stm32f1xx_it.o
- .debug_line    0x0000000000001ad6      0x6de ./Core/Src/system_stm32f1xx.o
- .debug_line    0x00000000000021b4       0x86 ./Core/Startup/startup_stm32f103c6ux.o
- .debug_line    0x000000000000223a      0x90b ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
- .debug_line    0x0000000000002b45      0xaf3 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
- .debug_line    0x0000000000003638      0x98e ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
- .debug_line    0x0000000000003fc6      0xd17 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
+ .debug_line    0x000000000000065e      0x6f6 ./Core/Src/main.o
+ .debug_line    0x0000000000000d54      0x661 ./Core/Src/stm32f1xx_hal_msp.o
+ .debug_line    0x00000000000013b5      0x722 ./Core/Src/stm32f1xx_it.o
+ .debug_line    0x0000000000001ad7      0x6de ./Core/Src/system_stm32f1xx.o
+ .debug_line    0x00000000000021b5       0x86 ./Core/Startup/startup_stm32f103c6ux.o
+ .debug_line    0x000000000000223b      0x90b ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+ .debug_line    0x0000000000002b46      0xaf3 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
+ .debug_line    0x0000000000003639      0x98e ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
+ .debug_line    0x0000000000003fc7      0xd17 ./Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
 
 .debug_str      0x0000000000000000    0x798a5
  .debug_str     0x0000000000000000    0x7874d ./Core/Src/EX_1.o
