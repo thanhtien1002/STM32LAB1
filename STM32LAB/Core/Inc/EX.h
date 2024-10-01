@@ -15,6 +15,7 @@
 // Khai báo hàm
 void EX_1(void);
 void EX_2(void);
+void EX_3(void);
 
 #ifdef __cplusplus
 }
