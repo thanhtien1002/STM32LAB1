@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2024 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2022 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under BSD 3-Clause license,
@@ -58,46 +58,32 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define RED1_Pin GPIO_PIN_1
-#define RED1_GPIO_Port GPIOA
-#define YELLOW1_Pin GPIO_PIN_2
-#define YELLOW1_GPIO_Port GPIOA
-#define GREEN1_Pin GPIO_PIN_3
-#define GREEN1_GPIO_Port GPIOA
-#define RED2_Pin GPIO_PIN_4
-#define RED2_GPIO_Port GPIOA
-#define YELLOW2_Pin GPIO_PIN_5
-#define YELLOW2_GPIO_Port GPIOA
-#define GREEN2_Pin GPIO_PIN_6
-#define GREEN2_GPIO_Port GPIOA
-#define A_Pin GPIO_PIN_0
-#define A_GPIO_Port GPIOB
-#define B_Pin GPIO_PIN_1
-#define B_GPIO_Port GPIOB
-#define C_Pin GPIO_PIN_2
-#define C_GPIO_Port GPIOB
-#define B2_Pin GPIO_PIN_8
-#define B2_GPIO_Port GPIOA
-#define C2_Pin GPIO_PIN_9
-#define C2_GPIO_Port GPIOA
-#define D2_Pin GPIO_PIN_10
-#define D2_GPIO_Port GPIOA
-#define E2_Pin GPIO_PIN_11
-#define E2_GPIO_Port GPIOA
-#define F2_Pin GPIO_PIN_12
-#define F2_GPIO_Port GPIOA
-#define G2_Pin GPIO_PIN_13
-#define G2_GPIO_Port GPIOA
-#define D_Pin GPIO_PIN_3
-#define D_GPIO_Port GPIOB
-#define E_Pin GPIO_PIN_4
-#define E_GPIO_Port GPIOB
-#define F_Pin GPIO_PIN_5
-#define F_GPIO_Port GPIOB
-#define G_Pin GPIO_PIN_6
-#define G_GPIO_Port GPIOB
-#define A2_Pin GPIO_PIN_7
-#define A2_GPIO_Port GPIOB
+#define LED_GREEN2_Pin GPIO_PIN_2
+#define LED_GREEN2_GPIO_Port GPIOA
+#define LED_RED1_Pin GPIO_PIN_3
+#define LED_RED1_GPIO_Port GPIOA
+#define LED_YELLOW1_Pin GPIO_PIN_4
+#define LED_YELLOW1_GPIO_Port GPIOA
+#define LED_GREEN1_Pin GPIO_PIN_5
+#define LED_GREEN1_GPIO_Port GPIOA
+#define LED_RED2_Pin GPIO_PIN_6
+#define LED_RED2_GPIO_Port GPIOA
+#define LED_YELLOW2_Pin GPIO_PIN_7
+#define LED_YELLOW2_GPIO_Port GPIOA
+#define L0_Pin GPIO_PIN_0
+#define L0_GPIO_Port GPIOB
+#define L1_Pin GPIO_PIN_1
+#define L1_GPIO_Port GPIOB
+#define L2_Pin GPIO_PIN_2
+#define L2_GPIO_Port GPIOB
+#define L3_Pin GPIO_PIN_3
+#define L3_GPIO_Port GPIOB
+#define L4_Pin GPIO_PIN_4
+#define L4_GPIO_Port GPIOB
+#define L5_Pin GPIO_PIN_5
+#define L5_GPIO_Port GPIOB
+#define L6_Pin GPIO_PIN_6
+#define L6_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
