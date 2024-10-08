@@ -53,9 +53,20 @@ static void MX_GPIO_Init(void);
 /* USER CODE END PFP */
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void display7SEG(int counter)
-	{
-		switch (counter){
+void reset() {
+			HAL_GPIO_WritePin(A_GPIO_Port,A_Pin, SET);
+			HAL_GPIO_WritePin(B_GPIO_Port,B_Pin, SET);
+			HAL_GPIO_WritePin(C_GPIO_Port,C_Pin, SET);
+			HAL_GPIO_WritePin(D_GPIO_Port,D_Pin, SET);
+			HAL_GPIO_WritePin(E_GPIO_Port,E_Pin, SET);
+			HAL_GPIO_WritePin(F_GPIO_Port,F_Pin, SET);
+			HAL_GPIO_WritePin(G_GPIO_Port,G_Pin, SET);
+}
+
+void display7SEG(int nums) {
+		reset();
+
+		switch (nums){
 		case 0:
 			HAL_GPIO_WritePin(A_GPIO_Port,A_Pin, RESET);
 			HAL_GPIO_WritePin(B_GPIO_Port,B_Pin, RESET);
@@ -145,7 +156,6 @@ void display7SEG(int counter)
 			HAL_GPIO_WritePin(E_GPIO_Port,E_Pin, SET);
 			HAL_GPIO_WritePin(F_GPIO_Port,F_Pin, RESET);
 			HAL_GPIO_WritePin(G_GPIO_Port,G_Pin, RESET);
-
 			break;
 		}
 	}
