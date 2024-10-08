@@ -303,11 +303,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 int count_time = 0;
 while(1){
-		if(count_time > 11) count_time = 0; // Điều chỉnh giá trị max của count_time thành 11 để mở rộng chu kỳ
-
+		if(count_time > 11) count_time = 0;
 		if(count_time <= 4 ) /* Green on the first and Red on the second */
 		{
-			display7SEG(4 - count_time);  // Thay đổi để phù hợp với khoảng thời gian 5 giây
+			display7SEG(4 - count_time);
 			display7SEG1(6 - count_time);
 			HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, SET);
 			HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, SET);
@@ -349,7 +348,8 @@ while(1){
 			HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
 			HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, RESET);
 		}
-
+		count_time++;
+		HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
