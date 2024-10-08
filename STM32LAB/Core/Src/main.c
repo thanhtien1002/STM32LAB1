@@ -297,96 +297,59 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
- //Den do sang 10s , Den vang sang 3 giay, Den xanh sang 7s
- int count_red1 = 9, count_yellow1 = 2, count_green1 = 6;
- int count_red2 = 9, count_yellow2 = 2, count_green2 = 6;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-// 1 la off, 0 la on;
- while(1)
- {
-    // Đường 1 đèn đỏ, đường 2 đèn xanh
-    if (count_red1 > 0) {
-        // Đường 1 đèn đỏ
-        HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, 0);     // Bật đèn đỏ đường 1
-        HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, 1); // Tắt đèn vàng đường 1
-        HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, 1); // Tắt đèn xanh đường 1
+int count_time = 0;
+while(1){
+		if(count_time > 11) count_time = 0; // Điều chỉnh giá trị max của count_time thành 11 để mở rộng chu kỳ
 
-        // Đường 2 đèn xanh
-        HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, 1);     // Tắt đèn đỏ đường 2
-        HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, 1); // Tắt đèn vàng đường 2
-        HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, 0); // Bật đèn xanh đường 2
+		if(count_time <= 4 ) /* Green on the first and Red on the second */
+		{
+			display7SEG(4 - count_time);  // Thay đổi để phù hợp với khoảng thời gian 5 giây
+			display7SEG1(6 - count_time);
+			HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, SET);
+			HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, SET);
+			HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, SET);
+			HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, SET);
+			HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, RESET);
+			HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, RESET);
+		}
+		else if(count_time <= 5 ) /* Yellow on the first and Red on the second */
+		{
+			display7SEG(5 - count_time);
+			display7SEG1(6 - count_time);
+			HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, SET);
+			HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, SET);
+			HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, SET);
+			HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, SET);
+			HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, RESET);
+			HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED2_Pin, RESET);
+		}
+		else if(count_time <= 9 ) /* Red on the first and Green on the second */
+		{
+			display7SEG(11 - count_time);
+			display7SEG1(9 - count_time);
+			HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, SET);
+			HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, SET);
+			HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, SET);
+			HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, SET);
+			HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
+			HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, RESET);
+		}
+		else if(count_time <= 11 ) /* Red on the first and Yellow on the second */
+		{
+			display7SEG(11 - count_time);
+			display7SEG1(11 - count_time);
+			HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, SET);
+			HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, SET);
+			HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, SET);
+			HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, SET);
+			HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
+			HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, RESET);
+		}
 
-        // Hiển thị đếm ngược
-        display7SEG(count_red1);    // Đếm ngược đèn đỏ đường 1
-        display7SEG1(count_green2); // Đếm ngược đèn xanh đường 2
-        count_red1--;
-        count_green2--;
-    }
-    else if (count_yellow2 > 0) {
-        // Đường 1 đèn đỏ
-        HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, 0);       // Bật đèn đỏ đường 1
-        HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, 1); // Tắt đèn vàng đường 1
-        HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, 1);   // Tắt đèn xanh đường 1
-
-        // Đường 2 đèn vàng
-        HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, 1);       // Tắt đèn đỏ đường 2
-        HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, 0); // Bật đèn vàng đường 2
-        HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, 1);   // Tắt đèn xanh đường 2
-
-        // Hiển thị đếm ngược
-        display7SEG1(count_yellow2);   // Đếm ngược đèn vàng đường 2
-        count_yellow2--;
-    }
-    else if (count_green1 > 0) {
-        // Đường 1 đèn xanh
-        HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, 1);     // Tắt đèn đỏ đường 1
-        HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, 1); // Tắt đèn vàng đường 1
-        HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, 0); // Bật đèn xanh đường 1
-
-        // Đường 2 đèn đỏ
-        HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, 0);     // Bật đèn đỏ đường 2
-        HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, 1); // Tắt đèn vàng đường 2
-        HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, 1); // Tắt đèn xanh đường 2
-
-        // Hiển thị đếm ngược
-        display7SEG(count_green1);    // Đếm ngược đèn xanh đường 1
-        display7SEG1(count_red2);     // Đếm ngược đèn đỏ đường 2
-        count_green1--;
-        count_red2--;
-    }
-    else if (count_yellow1 > 0) {
-        // Đường 1 đèn vàng
-        HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, 1);       // Tắt đèn đỏ đường 1
-        HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, 0); // Bật đèn vàng đường 1
-        HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, 1);   // Tắt đèn xanh đường 1
-
-        // Đường 2 đèn đỏ
-        HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, 0);       // Bật đèn đỏ đường 2
-        HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, 1); // Tắt đèn vàng đường 2
-        HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, 1);   // Tắt đèn xanh đường 2
-
-        // Hiển thị đếm ngược
-        display7SEG(count_yellow1);    // Đếm ngược đèn vàng đường 1
-        display7SEG1(count_red2);      // Đếm ngược đèn đỏ đường 2
-        count_yellow1--;
-    }
-
-    // Reset lại chu kỳ khi tất cả các đèn đều đếm về 0
-    if (count_red1 <= 0 && count_yellow1 <= 0 && count_green1 <= 0 && count_red2 <= 0 && count_yellow2 <= 0 && count_green2 <= 0) {
-        count_red1 = 10;
-        count_yellow1 = 3;
-        count_green1 = 7;
-
-        count_red2 = 10;
-        count_yellow2 = 3;
-        count_green2 = 7;
-    }
-
-    HAL_Delay(1000); // Delay 1 giây giữa mỗi lần thay đổi
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
