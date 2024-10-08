@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2024 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2022 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under BSD 3-Clause license,
@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <EX.h>
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -54,7 +54,43 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void clearALLClock(){
+		HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, SET);
+		HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, SET);
+		HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, SET);
+		HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, SET);
+		HAL_GPIO_WritePin(LED_5_GPIO_Port, LED_5_Pin, SET);
+		HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, SET);
+		HAL_GPIO_WritePin(LED_7_GPIO_Port, LED_7_Pin, SET);
+		HAL_GPIO_WritePin(LED_8_GPIO_Port, LED_8_Pin, SET);
+		HAL_GPIO_WritePin(LED_9_GPIO_Port, LED_9_Pin, SET);
+		HAL_GPIO_WritePin(LED_10_GPIO_Port, LED_10_Pin, SET);
+		HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, SET);
+		HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, SET);
+}
+void setNumberOnClock(int num){
+	if (num >= 0 && num <= 12)
+		HAL_GPIO_WritePin(GPIOA, (1 << (num + 4)), GPIO_PIN_RESET);
+	else return;
+}
 
+void clearNumberOnClock(int num){
+	if (num >= 0 && num <= 12)
+		HAL_GPIO_WritePin(GPIOA, (1 << (num + 4)), GPIO_PIN_SET);
+	else return;
+}
+void displayCLock(int hour, int min, int sec){
+	int HourP = hour % 12;
+	int MinP = min / 5;
+	int SecP = sec / 5;
+	for (int i = 0; i < 12;i++){
+		clearNumberOnClock(i);
+	}
+
+	setNumberOnClock(HourP);
+	setNumberOnClock(MinP);
+	setNumberOnClock(SecP);
+}
 /* USER CODE END 0 */
 
 /**
@@ -91,9 +127,25 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  int hour = 0;
+  int min = 30;
+  int sec = 0;
   while (1)
   {
-	  EX_1();
+	  displayCLock(hour, min, sec);
+	  	  HAL_Delay(100);
+	  	  sec++;
+	  	  if (sec >= 60){
+	  		  sec = 0;
+	  		  min++;
+	  	  }
+	  	  if (min >= 60){
+	  		  min = 0;
+	  		  hour++;
+	  	  }
+	  	  if (hour >= 12){
+	  		  hour = 0;
+	  	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -149,10 +201,16 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED_RED_Pin|LED_YELLOW_Pin|LED_GREEN_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin
+                          |LED_5_Pin|LED_6_Pin|LED_7_Pin|LED_8_Pin
+                          |LED_9_Pin|LED_10_Pin|LED_11_Pin|LED_12_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : LED_RED_Pin LED_YELLOW_Pin LED_GREEN_Pin */
-  GPIO_InitStruct.Pin = LED_RED_Pin|LED_YELLOW_Pin|LED_GREEN_Pin;
+  /*Configure GPIO pins : LED_1_Pin LED_2_Pin LED_3_Pin LED_4_Pin
+                           LED_5_Pin LED_6_Pin LED_7_Pin LED_8_Pin
+                           LED_9_Pin LED_10_Pin LED_11_Pin LED_12_Pin */
+  GPIO_InitStruct.Pin = LED_1_Pin|LED_2_Pin|LED_3_Pin|LED_4_Pin
+                          |LED_5_Pin|LED_6_Pin|LED_7_Pin|LED_8_Pin
+                          |LED_9_Pin|LED_10_Pin|LED_11_Pin|LED_12_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
