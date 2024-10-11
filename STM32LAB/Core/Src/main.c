@@ -64,7 +64,7 @@ static void MX_GPIO_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-void reset_state(int count) {
+void reset_state() {
 	  HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, SET);
 	  HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, SET);
 	  HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, SET);
