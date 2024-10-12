@@ -83,10 +83,22 @@ void displayCLock(int hour, int min, int sec){
 	int HourP = hour % 12;
 	int MinP = min / 5;
 	int SecP = sec / 5;
-	for (int i = 0; i < 12;i++){
-		clearNumberOnClock(i);
-	}
 
+//	Clear
+	clearNumberOnClock(0);
+	clearNumberOnClock(1);
+	clearNumberOnClock(2);
+	clearNumberOnClock(3);
+	clearNumberOnClock(4);
+	clearNumberOnClock(5);
+	clearNumberOnClock(6);
+	clearNumberOnClock(7);
+	clearNumberOnClock(8);
+	clearNumberOnClock(9);
+	clearNumberOnClock(10);
+	clearNumberOnClock(11);
+
+//	Set
 	setNumberOnClock(HourP);
 	setNumberOnClock(MinP);
 	setNumberOnClock(SecP);
