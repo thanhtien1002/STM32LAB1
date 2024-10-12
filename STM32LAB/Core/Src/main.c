@@ -78,6 +78,13 @@ void clearAllClock() {
 		  HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, SET);
 		  HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, SET);
 	}
+
+void setNumberonClock(int num) {
+	if (num >= 0 && num <= 12) {
+		HAL_GPIO_WritePin(GPIOA, (1 << (num + 4)), RESET);
+	}
+	else return;
+}
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -107,45 +114,19 @@ void clearAllClock() {
   int count = 0;
   while (1)
   {
-	  if (count == 0) {
-		  clearAllClock();
-	  }
-	  else if (count == 1) {
-		  HAL_GPIO_WritePin(LED_1_GPIO_Port, LED_1_Pin, RESET);
-	  }
-	  else if (count == 2) {
-		  HAL_GPIO_WritePin(LED_2_GPIO_Port, LED_2_Pin, RESET);
-	  }
-	  else if (count == 3) {
-		  HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, RESET);
-	  }
-	  else if (count == 4) {
-		  HAL_GPIO_WritePin(LED_4_GPIO_Port, LED_4_Pin, RESET);
-	  }
-	  else if (count == 5) {
-		  HAL_GPIO_WritePin(LED_5_GPIO_Port, LED_5_Pin, RESET);
-	  }
-	  else if (count == 6) {
-		  HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, RESET);
-	  }
-	  else if (count == 7) {
-		  HAL_GPIO_WritePin(LED_7_GPIO_Port, LED_7_Pin, RESET);
-	  }
-	  else if (count == 8) {
-		  HAL_GPIO_WritePin(LED_8_GPIO_Port, LED_8_Pin, RESET);
-	  }
-	  else if (count == 9) {
-		  HAL_GPIO_WritePin(LED_9_GPIO_Port, LED_9_Pin, RESET);
-	  }
-	  else if (count == 10) {
-		  HAL_GPIO_WritePin(LED_10_GPIO_Port, LED_10_Pin, RESET);
-	  }
-	  else if (count == 11) {
-		  HAL_GPIO_WritePin(LED_11_GPIO_Port, LED_11_Pin, RESET);
-	  }
-	  else if (count == 12) {
-		  HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, RESET);
-	  }
+	  clearAllClock();
+	  if (count == 1) 	setNumberonClock(0);
+	  else if (count == 2) 	setNumberonClock(1);
+	  else if (count == 3) 	setNumberonClock(2);
+	  else if (count == 4) 	setNumberonClock(3);
+	  else if (count == 5) 	setNumberonClock(4);
+	  else if (count == 6) 	setNumberonClock(5);
+	  else if (count == 7) 	setNumberonClock(6);
+	  else if (count == 8) 	setNumberonClock(7);
+	  else if (count == 9) 	setNumberonClock(8);
+	  else if (count == 10) setNumberonClock(9);
+	  else if (count == 11) setNumberonClock(10);
+	  else if (count == 12) setNumberonClock(11);
 
 	  if (count > 12) {
 		  count = 0;
