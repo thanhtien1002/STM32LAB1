@@ -79,11 +79,17 @@ void clearAllClock() {
 		  HAL_GPIO_WritePin(LED_12_GPIO_Port, LED_12_Pin, SET);
 	}
 
-void setNumberonClock(int num) {
+void setNumberOnClock(int num) {
 	if (num >= 0 && num <= 12) {
 		HAL_GPIO_WritePin(GPIOA, (1 << (num + 4)), RESET);
 	}
 	else return;
+}
+
+void clearNumberOnclock(int num) {
+	if (num >= 0 && num <= 12) {
+		HAL_GPIO_WritePin(GPIOA, (1 << (num + 4)), SET);
+	}
 }
   /* USER CODE END 1 */
 
@@ -114,24 +120,30 @@ void setNumberonClock(int num) {
   int count = 0;
   while (1)
   {
-	  clearAllClock();
-	  if (count == 1) 	setNumberonClock(0);
-	  else if (count == 2) 	setNumberonClock(1);
-	  else if (count == 3) 	setNumberonClock(2);
-	  else if (count == 4) 	setNumberonClock(3);
-	  else if (count == 5) 	setNumberonClock(4);
-	  else if (count == 6) 	setNumberonClock(5);
-	  else if (count == 7) 	setNumberonClock(6);
-	  else if (count == 8) 	setNumberonClock(7);
-	  else if (count == 9) 	setNumberonClock(8);
-	  else if (count == 10) setNumberonClock(9);
-	  else if (count == 11) setNumberonClock(10);
-	  else if (count == 12) setNumberonClock(11);
+	  if (count == 0) 		clearAllClock();
+	  else if (count == 1) 	setNumberOnClock(0);
+	  else if (count == 2) 	setNumberOnClock(1);
+	  else if (count == 3) 	setNumberOnClock(2);
+	  else if (count == 4) 	setNumberOnClock(3);
+	  else if (count == 5) 	setNumberOnClock(4);
+	  else if (count == 6) 	setNumberOnClock(5);
+	  else if (count == 7) 	setNumberOnClock(6);
+	  else if (count == 8) 	setNumberOnClock(7);
+	  else if (count == 9) 	setNumberOnClock(8);
+	  else if (count == 10) setNumberOnClock(9);
+	  else if (count == 11) setNumberOnClock(10);
+	  else if (count == 12) setNumberOnClock(11);
 
 	  if (count > 12) {
 		  count = 0;
-		  clearAllClock();
+		  clearNumberOnclock(1);
+		  clearNumberOnclock(3);
+		  clearNumberOnclock(5);
+		  clearNumberOnclock(7);
+		  clearNumberOnclock(9);
+		  clearNumberOnclock(11);
 	  }
+
 
 	  count++;
 	  HAL_Delay(1000);
